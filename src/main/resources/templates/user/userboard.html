@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{user/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Vote Form</title>
+</head>
+<body>
+	<section>
+		<div class="container ">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card text-center userboard">
+						<div th:if="${session.message}"
+							th:classappend="${session.message.type}" class="alert"
+							role="alert">
+							<p class="text-center" th:text="${session.message.content}"></p>
+							<th:block th:text="${@removeSession.removeSession()}"></th:block>
+						</div>
+						<h1>Welcome to User page</h1>
+
+						<form th:action="@{/api1/user/vote}" method="POST"
+							th:object="${datas}">
+							<input type="radio" id="candidate1" name="candidate1" value="1">
+							<label for="candidate1">Candidate 1</label><br> <input
+								type="radio" id="candidate2" name="candidate2" value="1">
+							<label for="candidate2">Candidate 2</label><br> <input
+								type="radio" id="candidate3" name="candidate3" value="1">
+							<label for="candidate3">Candidate 3</label><br> <input
+								type="radio" id="candidate4" name="candidate4" value="1">
+							<label for="candidate4">Candidate 4</label><br> <br>
+							<button type="submit">Vote</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+</body>
+</html>

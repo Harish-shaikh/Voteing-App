@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{admin/base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Vote Counts</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 offset-md-3">
+					<div class="my-card adminboard text-center">
+                        <!-- Iterate over the candidateVotesCount map -->
+                        <ul>
+                            <li th:each="entry : ${candidateVotesCount}">
+                                <!-- Display candidate name and vote count -->
+                                <span th:text="${entry.key}"></span><span>:</span><span th:text="${entry.value}"></span>
+                            </li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
